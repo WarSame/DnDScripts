@@ -28,6 +28,7 @@ def roll(rollStr):
         rollCall=rollDict[rollStr]
     except KeyError:
         print "Unable to find your roll options in the table."
+        raw_input("Press enter to exit.")
         sys.exit()
     for i in range(0,6):
         stats.append(rollCall())
@@ -64,6 +65,7 @@ def getStatsSet(classStr):
     statSet=classDict.get(classStr)
     if statSet is None:
         print "Unable to find your class in the table."
+        raw_input("Press enter to exit.")
         sys.exit()
     return statSet
 
@@ -86,11 +88,12 @@ def assort(origStats,classOrder):
 def main():
     print "Class options: Barbarian, Bard, Cleric, Druid, Fighter,"\
 "Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock, Wizard."
-    classStr=takeInput("Enter a class name:")
+    classStr=takeInput("Enter a class name: ")
     print "Roll options: 3d6, 4d6b3."
-    rollStr=takeInput("Enter a roll option:")
+    rollStr=takeInput("Enter a roll option: ")
     stats=roll(rollStr)
     classOrder=getStatsSet(classStr)
     assort(stats,classOrder)
 
 main()
+raw_input("Press enter to exit.")
